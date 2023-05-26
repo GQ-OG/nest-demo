@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/girls/addGirl HTTP/1.1
+content-type: application/json
+
+{
+    "name": "larry",
+    "id": 6
+}
