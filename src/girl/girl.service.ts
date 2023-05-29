@@ -2,15 +2,16 @@ import { Get, Injectable, Redirect } from '@nestjs/common';
 
 @Injectable()
 export class GirlService {
+  private list = ['小红', '小兰'];
   getGirlsList() {
     return {
       code: 0,
       msg: 'success',
-      data: ['小红', '小兰'],
+      data: this.list?.filter((item) => !!item),
     };
   }
   addGirl({ id, name }: { id: number; name: string }) {
-    console.log(id, '----------------', name);
+    this.list.push(name);
     return {
       code: 0,
       msg: '添加成功',
