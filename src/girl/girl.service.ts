@@ -11,7 +11,16 @@ export class GirlService {
     };
   }
   addGirl({ id, name }: { id: number; name: string }) {
-    this.list.push(name);
+    this.list.push(name[0]);
+    return {
+      code: 0,
+      msg: '添加成功',
+      data: { id, name },
+    };
+  }
+  addGirlError({ id, name }: { id: number; name: Array<string> }) {
+    this.list.push(name[0]);
+    name.push('push');
     return {
       code: 0,
       msg: '添加成功',

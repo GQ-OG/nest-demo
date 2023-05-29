@@ -33,6 +33,14 @@ export class GirlController {
     return this.girlService.addGirl({ id: Number(body.id), name: body.name });
   }
 
+  @Post('addGirlError')
+  addGirlError(@Body() body): any {
+    return this.girlService.addGirlError({
+      id: Number(body.id),
+      name: body.name,
+    });
+  }
+
   @Get('detail')
   getGirlDetail(@Query() query): any {
     return this.girlService.getDetail(Number(query.id));
