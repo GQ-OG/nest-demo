@@ -8,8 +8,11 @@ import {
   Post,
   Query,
   Redirect,
+  UsePipes,
 } from '@nestjs/common';
 import { GirlService } from './girl.service';
+import { ValidationPipe } from 'src/pipe/validation/validation.pipe';
+import { GirlInfoDto } from 'src/config/girl.dto';
 
 @Controller('girls')
 export class GirlController {
@@ -29,7 +32,8 @@ export class GirlController {
   }
 
   @Post('addGirl')
-  addGirl(@Body() body): any {
+  @UsePipes(new ValidationPipe())
+  addGirl(@Body() body: GirlInfoDto): any {
     return this.girlService.addGirl({ id: Number(body.id), name: body.name });
   }
 
@@ -37,7 +41,7 @@ export class GirlController {
   addGirlError(@Body() body): any {
     return this.girlService.addGirlError({
       id: Number(body.id),
-      name: body.name,
+      name: body?.name,
     });
   }
 

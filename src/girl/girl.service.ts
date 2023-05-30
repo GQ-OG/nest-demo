@@ -11,7 +11,7 @@ export class GirlService {
     };
   }
   addGirl({ id, name }: { id: number; name: string }) {
-    this.list.push(name[0]);
+    this.list.push(name);
     return {
       code: 0,
       msg: '添加成功',
